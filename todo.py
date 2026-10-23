@@ -32,9 +32,13 @@ def lister():
         print(f"{numero}. [{case}] {tache['texte']}")
         print(f"Total : {len(taches)} tâche(s)")
 
+def aide():
+        print("Usage : python todo.py <commande> [arguments]")
+        print("Commandes : ajouter <texte>, lister")
 
 def main():
     if len(sys.argv) < 2:
+        print(print(">>> TODO.py - Appli de gestion de TODO"))
        print("Usage : python todo.py <commande> [arguments]")
         print("Commandes : ajouter <texte>, lister")
         return
@@ -43,6 +47,8 @@ def main():
         ajouter(" ".join(sys.argv[2:]))
     elif commande == "lister":
         lister()
+    elif commande== "aie":
+        aide()
     else:
         print(f"Commande inconnue : {commande}")
 
