@@ -31,15 +31,22 @@ def lister():
         case = "x" if tache["faite"] else " "
         print(f"{numero}. [{case}] {tache['texte']}")
         print(f"Total : {len(taches)} tâche(s)")
+        
+def terminer(numero):
+    taches = charger()
+    taches[numero - 1]["faite"] = True
+    sauvegarder(taches)
+    print(f"Tâche {numero} terminée.")
+
 
 def aide():
         print("Usage : python todo.py <commande> [arguments]")
-        print("Commandes : ajouter <texte>, lister")
+        print("Commandes : ajouter <texte>, lister,terminer<numero>,aide")
 
 def main():
     if len(sys.argv) < 2:
-        print(print(">>> TODO.py - Appli de gestion de TODO"))
-       print("Usage : python todo.py <commande> [arguments]")
+        print( "titre : TODO.py - Appli de gestion de TODO")
+        print("Usage : python todo.py <commande> [arguments]")
         print("Commandes : ajouter <texte>, lister")
         return
     commande = sys.argv[1]
@@ -47,7 +54,9 @@ def main():
         ajouter(" ".join(sys.argv[2:]))
     elif commande == "lister":
         lister()
-    elif commande== "aie":
+    elif commande == "terminer":
+        terminer(int(sys.argv[2]))   
+    elif commande== "aide":
         aide()
     else:
         print(f"Commande inconnue : {commande}")
