@@ -26,7 +26,7 @@ def ajouter(texte):
 def lister():
     taches = charger()
     if not taches:
-        print("Aucune tâche.")
+          print("Aucune tâche, profitez-en !")
     for numero, tache in enumerate(taches, start=1):
         case = "x" if tache["faite"] else " "
         print(f"{numero}. [{case}] {tache['texte']}")
@@ -36,7 +36,7 @@ def lister():
 def main():
     if len(sys.argv) < 2:
        print("Usage : python todo.py <commande> [arguments]")
-        print("Commandes : ajouter <texte>, lister")
+       print("Commandes : ajouter <texte>, lister")
         return
     commande = sys.argv[1]
     if commande == "ajouter":
