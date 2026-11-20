@@ -31,7 +31,20 @@ def lister():
         case = "x" if tache["faite"] else " "
         print(f"{numero}. [{case}] {tache['texte']}")
         print(f"Total : {len(taches)} tâche(s)")
+        
+def terminer(numero):
+    taches = charger()
+    taches[numero - 1]["faite"] = True
+    sauvegarder(taches)
+    print(f"Tâche {numero} terminée.")
+    
+def supprimer(numero):
+    taches = charger()
+    tache = taches.pop(numero - 1)
+    sauvegarder(taches)
+    print(f"Tâche supprimée : {tache['texte']}")
 
+<<<<<<< HEAD
 def terminer(numero):
     taches = charger()
     taches[numero - 1]["faite"] = True
@@ -47,15 +60,35 @@ def main():
        print("Usage : python todo.py <commande> [arguments]")
        print("Commandes : ajouter <texte>, lister")
        return
+=======
+def aide():
+        print("Usage : python todo.py <commande> [arguments]")
+        print("Commandes : ajouter <texte>, lister, terminer<numero>, aide")
+
+def main():
+    if len(sys.argv) < 2:
+        print( "titre : TODO.py - Appli de gestion de TODO")
+        print("Usage : python todo.py <commande> [arguments]")
+        print("Commandes : ajouter <texte>, lister, terminer <numero>, supprimer <numero>, aide")
+        return
+>>>>>>> feature/terminer
     commande = sys.argv[1]
     if commande == "ajouter":
         ajouter(" ".join(sys.argv[2:]))
     elif commande == "lister":
         lister()
     elif commande == "terminer":
+<<<<<<< HEAD
         terminer(int(sys.argv[2]))    
     elif commande == "aide":
         afficher_aide()
+=======
+        terminer(int(sys.argv[2]))   
+    elif commande == "supprimer":
+        supprimer(int(sys.argv[2]))    
+    elif commande== "aide":
+        aide()
+>>>>>>> feature/terminer
     else:
         print(f"Commande inconnue : {commande}")
 
